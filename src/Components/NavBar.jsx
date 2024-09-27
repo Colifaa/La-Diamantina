@@ -65,6 +65,7 @@ function NavBar() {
       </button>
     </div>
   </div>
+  
   )
 }
 
