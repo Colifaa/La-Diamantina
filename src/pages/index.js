@@ -12,8 +12,8 @@ export default function index() {
  
 <div> 
 
+afdshadfhdfahad
 
-<Footer/>
 </div>
   )
 }
