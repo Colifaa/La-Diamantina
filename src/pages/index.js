@@ -15,6 +15,7 @@ export default function index() {
 <NavBar/>
 afdshadfhdfahad
 <Home/>
+<Footer/>
 
 </div>
   )
