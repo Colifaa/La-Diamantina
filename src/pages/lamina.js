@@ -10,7 +10,7 @@ function Mine() {
         <title>La Mina - La Diamantina</title>
         <meta name="description" content="Conoce la historia de la mina La Diamantina, su importancia y el proceso de extracción." />
       </Head>
-    <NavBar />
+ 
       <section className="bg-blueGray-50 py-10">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-semibold text-center mb-8">La Mina La Diamantina</h2>
