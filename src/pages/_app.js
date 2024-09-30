@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider>
       <NavBar/>
         <Component {...pageProps} />
+        <Footer/>
       </ThemeProvider>
     </ChakraProvider>
   )

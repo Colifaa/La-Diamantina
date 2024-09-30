@@ -46,7 +46,7 @@ function About() {
         </div>
       </section>
 
-      <section className="bg-white py-10">
+      <section >
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-semibold text-center mb-8">Nuestra Misión y Valores</h2>
           <p className="text-lg text-center text-blueGray-500 mb-8">
