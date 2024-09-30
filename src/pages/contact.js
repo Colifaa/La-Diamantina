@@ -10,7 +10,6 @@ function Contact() {
         <title>Contacto - La Diamantina</title>
         <meta name="description" content="Contacta con nosotros para cualquier consulta o información sobre nuestros productos." />
       </Head>
-    <NavBar />
       <section className="bg-blueGray-50 py-10">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-semibold text-center mb-8">Contáctanos</h2>

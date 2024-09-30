@@ -10,8 +10,6 @@ function About() {
         <title>Sobre Nosotros - La Diamantina</title>
         <meta name="description" content="Conoce la historia y los valores de La Diamantina, una empresa familiar dedicada a la fabricación de piedras de afilar." />
       </Head>
-      <NavBar />
-
       <section className="bg-blueGray-50 py-10">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-semibold text-center mb-8">Nuestra Historia</h2>
