@@ -14,7 +14,7 @@ export default function index() {
 <div> 
   
 <Home/>
-<Footer/>
+
 </div>
   )
 }
