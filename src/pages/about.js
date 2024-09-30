@@ -57,7 +57,7 @@ function About() {
         </div>
       </section>
 
-      <Footer />
+
     </div>
   );
 }

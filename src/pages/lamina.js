@@ -41,7 +41,7 @@ function Mine() {
         </div>
       </section>
 
-      <Footer />
+
     </div>
   );
 }
