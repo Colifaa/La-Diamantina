@@ -12,6 +12,7 @@ import {
   Flex,
   IconButton,
   useColorModeValue,
+  Image
 } from '@chakra-ui/react'
 import { FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa'
 import { BiMailSend } from 'react-icons/bi'
@@ -171,11 +172,18 @@ export default function LargeWithAppLinksAndSocial() {
             flexGrow: 1,
             ml: 8,
           }}>
-          <Logo />
+          <Image 
+            src='/logo.png' 
+            alt="Logo de la empresa" 
+            boxSize="250px"
+            objectFit="contain"
+            position="relative"
+            zIndex="10" // Esto hace que sobresalga
+            mx="auto" // Para centrarlo horizontalmente
+          />
         </Flex>
         <Text pt={6} fontSize={'sm'} textAlign={'center'}>
-          © 2022 Chakra Templates. All rights reserved
-        </Text>
+          © 2024 Todos los derechos reservados La Diamantina, realizada por Desweby        </Text>
     
           <Stack direction={'row'} spacing={6}>
             <SocialButton label={'Twitter'} href={'#'}>
