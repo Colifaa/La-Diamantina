@@ -1,123 +1,160 @@
-'use client';
+'use client'
+import React from 'react'
+import {
+  Box,
+  Flex,
+  Avatar,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+  useColorMode,
+  Center,
+  Container,
+  Image,
+  IconButton,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton
+} from '@chakra-ui/react'
 
-import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { Link } from '@chakra-ui/next-js'
+
 
 export default function NavBar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-  const router = useRouter();
-  const sidebarRef = useRef(null); // Referencia a la sidebar
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle('dark-mode');
-  };
-
-  // Manejar clics fuera de la sidebar
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target) && menuOpen) {
-        closeMenu();
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [menuOpen]);
+  const { colorMode, toggleColorMode } = useColorMode()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
 
   return (
     <>
-      {/* Barra de navegación */}
-      <nav className={`fixed top-0 w-full z-50 p-4 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md`}>
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo a la izquierda */}
-          <div className="flex items-center">
-            <Link href="/">
-              <Image
-                src="/logo.png"
-                alt="Logo"
-                width={300}
-                height={100}
-                className="h-16 object-contain" // Logo ocupa la altura de la navbar
-              />
-            </Link>
-          </div>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+          {/* Menú Hamburguesa para móvil */}
+          <IconButton
+            size={'sm'}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={'Open Menu'}
+            display={{ md: 'none' }}
+            onClick={isOpen ? onClose : onOpen}
+          />
 
-          {/* Links del menú, visibles en pantallas grandes y centrados */}
-          <div className="hidden lg:flex flex-grow justify-center space-x-8">
-            <Link href="/about" className="hover:text-blue-500">Sobre Nosotros</Link>
-            <Link href="/lamina" className="hover:text-blue-500">La Mina</Link>
-            <Link href="/contact" className="hover:text-blue-500">Contacto</Link>
-          </div>
+          <Link href='/'>
+            <Image 
+              src='/logo.png' 
+              alt="Logo de la empresa" 
+              boxSize="300px"
+              objectFit="contain"
+              position="relative"
+              zIndex="10"
+              mx="auto"
+              _hover={{ cursor: 'pointer' }} // Añadir cursor de pointer al pasar sobre el logo
+            />
+          </Link>
+          
+          {/* Links en pantalla grande */}
+          <Container
+            as={Stack}
+            maxW={'6xl'}
+            py={4}
+            spacing={4}
+            justify={'center'}
+            align={'center'}
+            display={{ base: 'none', md: 'flex' }} // Ocultar en móviles
+          >
+            <Stack direction={'row'} spacing={6}>
+              <Link href='/about' color='blue.400' _hover={{ color: 'blue.500' }}>
+                Sobre Nosotros
+              </Link>
+              <Link href='/lamina' color='blue.400' _hover={{ color: 'blue.500' }}>
+                La mina
+              </Link>
+              <Link href='/contact' color='blue.400' _hover={{ color: 'blue.500' }}>
+              Contacto
+              </Link>
+            </Stack>
+          </Container>
 
-          {/* Botones de modo oscuro y perfil, alineados a la derecha */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <button onClick={toggleDarkMode} className="text-xl cursor-pointer">
-              {darkMode ? '🌙' : '☀️'}
-            </button>
-            <button onClick={() => router.push('/profile')}>
-              <Image
-                src="https://avatars.dicebear.com/api/male/username.svg"
-                alt="Avatar"
-                width={40}
-                height={40}
-                className="rounded-full"
-              />
-            </button>
-          </div>
+          {/* Tema y avatar */}
+          <Flex alignItems={'center'}>
+            <Stack direction={'row'} spacing={7}>
+              <Button onClick={toggleColorMode}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
 
-          {/* Menú hamburguesa visible solo en móviles */}
-          <div className="block lg:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-2xl focus:outline-none"
-            >
-              {menuOpen ? '✖' : '☰'}
-            </button>
-          </div>
-        </div>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={'full'}
+                  variant={'link'}
+                  cursor={'pointer'}
+                  minW={0}>
+                  <Avatar
+                    size={'sm'}
+                    src={'https://avatars.dicebear.com/api/male/username.svg'}
+                  />
+                </MenuButton>
+                <MenuList alignItems={'center'}>
+                  <br />
+                  <Center>
+                    <Avatar
+                      size={'2xl'}
+                      src={'https://avatars.dicebear.com/api/male/username.svg'}
+                    />
+                  </Center>
+                  <br />
+                  <Center>
+                    <p>Username</p>
+                  </Center>
+                  <br />
+                  <MenuDivider />
+                  <MenuItem>Your Servers</MenuItem>
+                  <MenuItem>Account Settings</MenuItem>
+                  <MenuItem>Logout</MenuItem>
+                </MenuList>
+              </Menu>
+            </Stack>
+          </Flex>
+        </Flex>
 
-        {/* Sidebar deslizante para móvil */}
-        <div
-          ref={sidebarRef} // Referencia a la sidebar
-          className={`fixed top-0 right-0 h-full w-64 bg-${darkMode ? 'gray-800' : 'white'} transition-transform duration-300 transform ${
-            menuOpen ? 'translate-x-0' : 'translate-x-full'
-          } lg:hidden`}
+        {/* Drawer para menú hamburguesa en móviles */}
+        <Drawer
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          finalFocusRef={btnRef}
         >
-          <div className="flex justify-between items-center p-4">
-            <h2 className={`text-lg ${darkMode ? 'text-white' : 'text-black'}`}>Menú</h2>
-            <button onClick={closeMenu} className="text-xl">
-              ✖
-            </button>
-          </div>
-          <div className="flex flex-col items-center py-10">
-            <Link href="/about" className="py-2" onClick={closeMenu}>Sobre Nosotros</Link>
-            <Link href="/lamina" className="py-2" onClick={closeMenu}>La Mina</Link>
-            <Link href="/contact" className="py-2" onClick={closeMenu}>Contacto</Link>
-          </div>
-        </div>
-      </nav>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader>Navegación</DrawerHeader>
 
-      {/* Estilo global para modo oscuro */}
-      <style jsx global>{`
-        body.dark-mode {
-          background-color: #1a202c;
-          color: #f7fafc;
-        }
-      `}</style>
+            <DrawerBody>
+              <Stack as={'nav'} spacing={4}>
+                <Link href='/about'>About</Link>
+                <Link href='/contact'>Contact</Link>
+                <Link href='/lamina'>Lamina</Link>
+              </Stack>
+            </DrawerBody>
+
+            <DrawerFooter>
+              <Button variant="outline" mr={3} onClick={onClose}>
+                Cerrar
+              </Button>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
+      </Box>
     </>
-  );
+  )
 }
