@@ -6,9 +6,9 @@ import Products from './Products';
 import Mina from './Mina';
 import Empresa from './Empresa';
 import Contacto from './Contacto';
-import Footer from './components/Footer';
+
 import './i18n'; 
-import Sidebar from './components/Sidebar.jsx';
+
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<Sidebar />} />
       </Routes>
-      <Footer />
+   
     </Router>
   );
 };
