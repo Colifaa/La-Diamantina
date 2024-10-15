@@ -20,7 +20,6 @@ const App = () => {
         <Route path="/mina" element={<Mina />} />
         <Route path="/empresa" element={<Empresa />} />
         <Route path="/contacto" element={<Contacto />} />
-        
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />

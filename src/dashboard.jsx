@@ -4,7 +4,7 @@ import React from 'react'
 import Sidebar from './components/Sidebar'
 
 
-function dashboard() {
+function Dashboard() {
   return (
     <div>
     <Sidebar/>
@@ -12,4 +12,4 @@ function dashboard() {
   )
 }
 
-export default dashboard
+export default Dashboard
