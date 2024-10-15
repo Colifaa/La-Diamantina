@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar.jsx';
+
 import Home from './Home';
 import Products from './Products';
 import Mina from './Mina';
@@ -13,7 +13,7 @@ import Sidebar from './components/Sidebar.jsx';
 const App = () => {
   return (
     <Router>
-      <Navbar />
+ 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
