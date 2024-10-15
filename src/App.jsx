@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar1';
+import Navbar from './components/Navbar.jsx';
 import Home from './Home';
 import Products from './Products';
 import Mina from './Mina';
@@ -8,7 +8,7 @@ import Empresa from './Empresa';
 import Contacto from './Contacto';
 import Footer from './components/Footer';
 import './i18n'; 
-import Dashboard from './dashboard';
+import Sidebar from './components/Sidebar.jsx';
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/mina" element={<Mina />} />
         <Route path="/empresa" element={<Empresa />} />
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Sidebar />} />
       </Routes>
       <Footer />
     </Router>
